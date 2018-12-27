@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { setStartDate, setEndDate, setTextFilter, sortByDate, sortByAmount } from '../../actions/filters';
 
-test('should generate start date action object', () => {
+test('should generate set start date action object', () => {
     const action = setStartDate(moment(0));
     expect(action).toEqual({
         type: "SET_START_DATE",
@@ -9,7 +9,7 @@ test('should generate start date action object', () => {
     });
 });
 
-test('should generate end date action object', () => {
+test('should generate set end date action object', () => {
     const action = setEndDate(moment(0));
     expect(action).toEqual({
         type: "SET_END_DATE",
