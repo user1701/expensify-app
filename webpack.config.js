@@ -1,15 +1,18 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env) => {
     const isProduction = env === 'production';
-    const CSSExtract = new ExtractTextPlugin('styles.css');
+    const miniCssExtractPlugin = new MiniCssExtractPlugin({
+        filename: 'styles.css',
+    });
 
     return {
+        mode: isProduction ? 'production' : 'development',
         entry: './src/app.js',
         output: {
-            path: path.resolve(__dirname, 'public', 'dist'),
-            filename: 'bundle.js'
+            filename: 'bundle.js',
+            path: path.resolve(__dirname, 'public', 'dist')
         },
         module: {
             rules: [{
@@ -18,26 +21,33 @@ module.exports = (env) => {
                 exclude: /node_modules/
             }, {
                 test: /\.s?css$/,
-                use: CSSExtract.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                sourceMap: true
-                            }
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: true
-                            }
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: false
                         }
-                    ]
-                })
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
             }]
         },
+        resolve: {
+            extensions: ['.js', '.css', '.scss']
+        },
         plugins: [
-            CSSExtract
+            miniCssExtractPlugin
         ],
         devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
         devServer: {
