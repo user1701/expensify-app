@@ -13,8 +13,16 @@
     "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "css-loader": "0.28.4",
     "express": "4.15.4",
+    "mini-css-extract-plugin": "^0.8.0",
     "moment": "2.19.3",
     "node-sass": "4.5.3",
     "normalize.css": "^8.0.1",
@@ -30,28 +38,20 @@
     "sass-loader": "6.0.6",
     "style-loader": "0.18.2",
     "uuid": "3.1.0",
-    "validator": "8.0.0"
+    "validator": "8.0.0",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
-    "babel-loader": "^8.0.6",
     "enzyme": "3.0.0",
     "enzyme-adapter-react-16": "1.0.0",
     "enzyme-to-json": "3.0.1",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
-    "mini-css-extract-plugin": "^0.8.0",
     "raf": "3.3.2",
     "react-test-renderer": "16.0.0",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.1.11"
   }
 }
